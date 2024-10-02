@@ -7,15 +7,19 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
             margin: 0;
             padding: 20px;
+            background-color: #438a5c; /* Set background color */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh; /* Full height of the viewport */
         }
         .form-container {
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.9); /* White background with transparency */
             padding: 20px;
             max-width: 400px;
-            margin: 0 auto;
+            margin: 50px auto;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
@@ -46,13 +50,6 @@
         .submit-btn:hover {
             background-color: #4cae4c;
         }
-        .thank-you-message {
-            display: none;
-            text-align: center;
-            margin-top: 20px;
-            font-size: 18px;
-            color: green;
-        }
     </style>
 </head>
 <body>
@@ -82,33 +79,21 @@
             <!-- Submit Button -->
             <button type="submit" class="submit-btn">Submit</button>
         </form>
-
-        <!-- Thank You Message -->
-        <div id="thankYouMessage" class="thank-you-message">
-            Thank you for your submission!
-        </div>
     </div>
 
     <script>
         // Add event listener for form submission
         document.getElementById('admissionForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent default form submission
+            event.preventDefault(); // Prevent the default form submission
 
-            // Hide the form
-            document.getElementById('admissionForm').style.display = 'none';
+            // Get form data
+            const name = document.getElementById('name').value;
+            const classSelected = document.getElementById('class').value;
 
-            // Display the thank you message
-            document.getElementById('thankYouMessage').style.display = 'block';
+            // Redirect to thank you page with query parameters
+            window.location.href = `thankyou.html?name=${encodeURIComponent(name)}&class=${encodeURIComponent(classSelected)}`;
         });
     </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
